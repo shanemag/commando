@@ -1,0 +1,2 @@
+{"ts":1361717185903,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1361717188011,"patch":[[{"diffs":[[1,"<form action=\"/signup\" method=\"post\">\r\n<div>\r\n<label>Username:</label>\r\n<input type=\"text\" name=\"username\"/><br/>\r\n</div>\r\n<div>\r\n<label>Password:</label>\r\n<input type=\"password\" name=\"password\"/>\r\n</div>\r\n<div><input type=\"submit\" value=\"Sign Up\"/></div>\r\n</form>"]],"start1":0,"start2":0,"length1":0,"length2":264}]],"length":264,"saved":false}
