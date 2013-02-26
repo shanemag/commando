@@ -1,7 +1,10 @@
 #!/bin/env node
-//  OpenShift sample Node application
+//  OpenShift sample Node server
 var express = require('express');
 var fs      = require('fs');
+var mongoose = require('mongoose');
+var env = process.env.NODE_ENV || 'development'
+var config = require('./config/config')[env]
 
 
 /**
@@ -24,6 +27,13 @@ var SampleApp = function() {
         //  Set the environment variables we need.
         self.ipaddress = process.env.OPENSHIFT_INTERNAL_IP;
         self.port      = process.env.OPENSHIFT_INTERNAL_PORT || 8080;
+        
+        self.dbhost = process.env.OPENSHIFT_MONGODB_DB_HOST;
+        self.dbport = process.env.OPENSHIFT_MONGODB_DB_PORT;
+        self.user = 'admin';
+        self.pass = 'I37XGJJEjGAr';
+        self.dbname = 'commando';
+        self.login = self.user + ':' + self.pass;
 
         if (typeof self.ipaddress === "undefined") {
             //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
@@ -96,7 +106,6 @@ var SampleApp = function() {
     self.createRoutes = function() {
         self.routes = { };
 
-        // Routes for /health, /asciimo and /
         self.routes['/health'] = function(req, res) {
             res.send('1');
         };
@@ -131,6 +140,12 @@ var SampleApp = function() {
             self.app.get(r, self.routes[r]);
         }
     };
+    
+    self.initializeDb = function() {
+        //mongoose.connect(config.db);
+        mongoose.connect('mongodb://shane.maguire7@gmail.com:m4g5tool@linus.mongohq.com:10034/commando',
+           function(err) {if (err) { console.log("mongoose connect error: " + err); }  });
+    }
 
 
     /**
@@ -143,6 +158,7 @@ var SampleApp = function() {
 
         // Create the express server and routes.
         self.initializeServer();
+        self.initializeDb();
     };
 
 
