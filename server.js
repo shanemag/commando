@@ -141,7 +141,7 @@ var SampleApp = function() {
         }
     };
     
-    self.initializeDb = function() {
+    self.connectDb = function() {
         //mongoose.connect(config.db);
         mongoose.connect('mongodb://shane.maguire7@gmail.com:m4g5tool@linus.mongohq.com:10034/commando',
            function(err) {if (err) { console.log("mongoose connect error: " + err); }  });
@@ -158,7 +158,7 @@ var SampleApp = function() {
 
         // Create the express server and routes.
         self.initializeServer();
-        self.initializeDb();
+        self.connectDb();
     };
 
 
