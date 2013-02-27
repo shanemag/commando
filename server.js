@@ -10,7 +10,7 @@ var config = require('./config/config')[env]
 /**
  *  Define the sample application.
  */
-var SampleApp = function() {
+var App = function() {
 
     //  Scope.
     var self = this;
@@ -143,7 +143,7 @@ var SampleApp = function() {
     
     self.connectDb = function() {
         //mongoose.connect(config.db);
-        mongoose.connect('mongodb://shane.maguire7@gmail.com:m4g5tool@linus.mongohq.com:10034/commando',
+        mongoose.connect(config.db,
            function(err) {if (err) { console.log("mongoose connect error: " + err); }  });
     }
 
@@ -180,7 +180,7 @@ var SampleApp = function() {
 /**
  *  main():  Main code.
  */
-var zapp = new SampleApp();
+var zapp = new App();
 zapp.initialize();
 zapp.start();
 
