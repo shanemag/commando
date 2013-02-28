@@ -143,7 +143,7 @@ var App = function() {
     
     self.connectDb = function() {
         //mongoose.connect(config.db);
-        mongoose.connect(config.db,
+        mongoose.connect('mongodb://maguis26:bgepjyqm@linus.mongohq.com:10034/commando',
            function(err) {if (err) { console.log("mongoose connect error: " + err); }  });
     }
 
