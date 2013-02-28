@@ -4,7 +4,7 @@ module.exports = {
       app: {
         name: 'Commando'
       },
-      db: 'mongodb://shane.maguire7@gmail.com:m4g5tool@linus.mongohq.com:10034/commando',
+      db: 'mongodb://maguis26:bgepjyqm@linus.mongohq.com:10034/commando',
       /*facebook: {
           clientID: "APP_ID"
         , clientSecret: "APP_SECRET"
