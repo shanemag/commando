@@ -1,0 +1,10 @@
+{"ts":1364313176382,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":true,"ts":1364330245658,"patch":[[{"diffs":[[1,"link(rel=’stylesheet’, href=’/lib/bootstrap/bootstrap.min.css’)"]],"start1":0,"start2":0,"length1":0,"length2":63}]],"length":63,"saved":false}
+{"ts":1364330249370,"patch":[[{"diffs":[[-1,"link(rel=’stylesheet’, href=’/lib/bootstrap/bootstrap.min.css’)"]],"start1":0,"start2":0,"length1":63,"length2":0}]],"length":0,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1364413528739,"patch":[[{"diffs":[[1,"module.exports = {\r\n\r\n  // app.get('/'...)\r\n  index: function(req, res) {\r\n    res.render('index.jade', { locals:\r\n      { title: 'CrowdNotes' }\r\n    });\r\n  },"]],"start1":0,"start2":0,"length1":0,"length2":159}]],"length":159,"saved":false}
+{"ts":1364413542195,"patch":[[{"diffs":[[0,"ndex"],[-1,".jade"],[0,"', {"]],"start1":92,"start2":92,"length1":13,"length2":8}]],"length":154,"saved":false}
+{"ts":1364413547346,"patch":[[{"diffs":[[0,": 'C"],[-1,"rowdNotes"],[1,"ommando"],[0,"' }\r"]],"start1":123,"start2":123,"length1":17,"length2":15}]],"length":152,"saved":false}
+{"ts":1364413977047,"patch":[[{"diffs":[[0,");\r\n  },"],[1,"\r\n  "]],"start1":144,"start2":144,"length1":8,"length2":12}]],"length":156,"saved":false}
+{"ts":1364413979075,"patch":[[{"diffs":[[0,"});\r\n  }"],[-1,","],[1,"\r\n  "],[0,"\r\n  "]],"start1":143,"start2":143,"length1":13,"length2":16}]],"length":159,"saved":false}
+{"ts":1364413980699,"patch":[[{"diffs":[[0,";\r\n  }\r\n"],[-1,"  "],[1,"}"],[0,"\r\n  "]],"start1":145,"start2":145,"length1":14,"length2":13}]],"length":158,"saved":false}
+{"ts":1364413990661,"patch":[[{"diffs":[[0,"\r\n  }\r\n}"],[1,";"],[0,"\r\n  "]],"start1":146,"start2":146,"length1":12,"length2":13}]],"length":159,"saved":false}
