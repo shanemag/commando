@@ -1,23 +1,26 @@
-!!!
-html
-    head
-        title= 'Commando'
-        link(rel=’stylesheet’, href=’/css/bootstrap.min.css’)
-        link(rel=’stylesheet’, href=’/css/custom.css’)
-body
-    div.topbar
-        div.fill
-            div.container
-                a.brand(href='#') #{title}
-                ul.nav
-                    li.active
-                        a(href='#') Home
-                    li
-                        a(href='#about') About
-                    li
-                        a(href='#contact') Contact
-                 form.pull-right(method="post", id="loginForm")
-                    input.input-small(id="username", type="text", name="User", placeholder="Username")
-                    input.input-small(id="password", type="password", name="Password", placeholder="Password")
-                    input.btn.primary(type="submit", value="Sign In")
-                    p#loginPrompt.pull-right.login-prompt
+extends layout
+ 
+block content
+  div.top
+    form.form-horizontal(method="post", id="loginForm")
+      label Username
+      input.span3(id="username", type="text", name="User", placeholder="Enter your username")
+      label Password
+      input.span3(id="password", type="password", name="Password")
+      input.btn(type="submit", value="Log In")
+  div.container
+    div.content
+      table.table.table-striped
+        thead
+          tr
+            th Table
+            th Heading
+        tbody
+          tr
+            td Blah
+            td Test
+          tr
+            td Hello
+            td World
+ 
+  div.footer

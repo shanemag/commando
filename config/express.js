@@ -33,6 +33,10 @@ module.exports = function (app, config, passport) {
     
     app.use(app.router);
     
+    app.configure('development', function(){
+        app.use(express.errorHandler());
+    });
+    
      // assume "not found" in the error msgs
     // is a 404. this is somewhat silly, but
     // valid, you can do whatever you like, set

@@ -1,8 +1,8 @@
-var home = require('../routes/index');
+var routes = require('../routes');
 
 module.exports = function (app, passport) {
 
   // user routes
-  app.get('/', home.index);
+  app.get('/', routes.index);
 
 }

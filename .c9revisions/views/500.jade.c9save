@@ -1,0 +1,2 @@
+{"ts":1364673213685,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":true,"ts":1364673217854,"patch":[[{"diffs":[[1,"block main\r\n  h1 Oops something went wrong\r\n  br\r\n  span 500\r\n\r\nblock content\r\n  #error-message-box\r\n    #error-stack-trace\r\n      pre\r\n        code!= error"]],"start1":0,"start2":0,"length1":0,"length2":156}]],"length":156,"saved":false}
