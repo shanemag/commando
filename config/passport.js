@@ -31,6 +31,7 @@ module.exports = function (passport, config) {
               name: profile.displayName
             , email: profile.emails[0].value
             , username: profile.username
+            , keywords : {}
           });
           user.save(function (err) {
             if (err) console.log(err);

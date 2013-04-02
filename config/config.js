@@ -21,9 +21,9 @@ module.exports = {
         , callbackURL: 'http://localhost:3000/auth/github/callback'
       }, */
       google: {
-          clientID: "761773210542-9k70stvvnbbhoe3fbq14dnh7c769qgtl.apps.googleusercontent.com"
-        , clientSecret: "N0CXXDHYFfJj56mO-wTTL9OT"
-        , callbackURL: "https://project-livec9640dd85ff0.rhcloud.com/oauth2callback"
+          clientID: "137101343545.apps.googleusercontent.com"
+        , clientSecret: "830j4X5kEJlKs-EVH1NAELuQ"
+        , callbackURL: "http://127.0.0.1:3000/oauth2callback"
       } 
     }
   , test: {

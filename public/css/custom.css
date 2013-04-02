@@ -24,6 +24,15 @@ body {
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
+
+.jumbotron {
+  margin: 80px 0;
+  text-align: center;
+}
+
+.jumbotron h1 {
+  font-size: 72px;
+}
  
 /* Page header tweaks */
 .page-header {
