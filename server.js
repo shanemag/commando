@@ -34,7 +34,7 @@ require('./config/express')(app, config, passport);
 require('./config/routes')(app, passport);
 
 var ipaddress = process.env.OPENSHIFT_INTERNAL_IP;
-var port      = process.env.OPENSHIFT_INTERNAL_PORT || 8080;
+var port      = process.env.OPENSHIFT_INTERNAL_PORT || 3000;
 
 // Took this from Openshift sample app, seems like a handy function
 if (typeof ipaddress === "undefined") {

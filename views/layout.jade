@@ -2,10 +2,11 @@
 html
   head
     title= title
-    link(rel='stylesheet', href='../public/css/bootstrap.min.css')
-    link(rel='stylesheet', href='../public/css/bootstrap-responsive.min.css')
-    //link(rel='stylesheet', href='../stylesheets/style.css')
-    script(src='../public/js/jquery-1.9.1.js')
-    script(src='../public/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(src='/js/jquery-1.9.1.js')
+    script(src='/js/bootstrap.min.js')
   body
+  include topbar
     block content
