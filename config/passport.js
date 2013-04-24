@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var passport = require('passport')
-  , GoogleStrategy = require('passport-google-oauth').Strategy;
+  , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var User = mongoose.model('User');
 
 module.exports = function (passport, config) {
@@ -18,8 +18,8 @@ module.exports = function (passport, config) {
   });
   
   passport.use(new GoogleStrategy({
-      consumerKey: config.google.clientID,
-      consumerSecret: config.google.clientSecret,
+      clientID: config.google.clientID,
+      clientSecret: config.google.clientSecret,
       callbackURL: config.google.callbackURL
     },
     
@@ -30,8 +30,8 @@ module.exports = function (passport, config) {
           user = new User({
               name: profile.displayName
             , email: profile.emails[0].value
-            , username: profile.username
-            , keywords : {}
+            , username: profile.name.givenName
+            , google: profile._json
           });
           user.save(function (err) {
             if (err) console.log(err);

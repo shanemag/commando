@@ -1,26 +1,36 @@
-extends layout
- 
-block content
-  div.top
-    form.form-horizontal(method="post", id="loginForm")
-      label Username
-      input.span3(id="username", type="text", name="User", placeholder="Enter your username")
-      label Password
-      input.span3(id="password", type="password", name="Password")
-      input.btn(type="submit", value="Log In")
-  div.container
-    div.content
-      table.table.table-striped
-        thead
-          tr
-            th Table
-            th Heading
-        tbody
-          tr
-            td Blah
-            td Test
-          tr
-            td Hello
-            td World
- 
-  div.footer
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='/css/custom.css')
+    script(src='/js/jquery-1.9.1.js')
+    script(src='/js/bootstrap.min.js')
+body
+  include topbar
+  .container
+    .content
+      .jumbotron
+        h1 commando.
+        br
+        .row-fluid
+          .span8.offset2
+            form.form-search(method="post", id="parserform")
+              .input-append
+                input.input-xxlarge.search-query(id="parser", type="text")
+                input.btn.btn-primary(type="submit", value="Enter")
+        br
+        p.text-center Sign in with google for more options!
+        a(href="/auth/google")
+          img(src='img/steffi.jpg', width="204", height="32", href="/auth/google")
+      .row-fluid.text-center
+        .span8.offset2
+          h3.text-center Need Help?
+          p.text-center Welcome to Commando - The Keyword-based networking service!
+          br
+          p.text-center Please click the button below to see a list of the most commonly used publicly available keywords!
+          a(href="#")
+            input.center.btn(value="Top Keywords")
+
+        

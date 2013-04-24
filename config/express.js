@@ -24,18 +24,23 @@ module.exports = function (app, config, passport) {
         collection : 'sessions'
       })
     }));
+
+    app.use(function (req, res, next) {
+      res.locals.req = req;
+      next();
+    });
   
     app.use(passport.initialize());
     app.use(passport.session());
     
-    // serves icons faster
+    // serves favicon icons faster
     app.use(express.favicon());
-    
-    app.use(app.router);
     
     app.configure('development', function(){
         app.use(express.errorHandler());
     });
+
+    app.use(app.router);
     
      // assume "not found" in the error msgs
     // is a 404. this is somewhat silly, but
