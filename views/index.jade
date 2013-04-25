@@ -16,9 +16,9 @@ body
         br
         .row-fluid
           .span8.offset2
-            form.form-search(method="post", id="parserform")
+            form.form-search(method="get", id="parserform", action="/parse")
               .input-append
-                input.input-xxlarge.search-query(id="parser", type="text")
+                input.input-xxlarge.search-query(id="parser", type="text", name="command")
                 input.btn.btn-primary(type="submit", value="Enter")
         br
         p.text-center Sign in with google for more options!
