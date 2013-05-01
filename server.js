@@ -33,6 +33,7 @@ require('./config/express')(app, config, passport);
 // Bootstrap routes
 require('./config/routes')(app, passport);
 
+// port and IP
 var ipaddress = process.env.OPENSHIFT_INTERNAL_IP;
 var port      = process.env.OPENSHIFT_INTERNAL_PORT || 3000;
 

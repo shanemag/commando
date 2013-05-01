@@ -25,6 +25,7 @@ module.exports = function (app, config, passport) {
       })
     }));
 
+    // dynamic view helper function to enable use of req variable in views (for req.user)
     app.use(function (req, res, next) {
       res.locals.req = req;
       next();
@@ -33,13 +34,14 @@ module.exports = function (app, config, passport) {
     app.use(passport.initialize());
     app.use(passport.session());
     
-    // serves favicon icons faster
+    // serves favicon (mini icons) icons faster
     app.use(express.favicon());
     
     app.configure('development', function(){
         app.use(express.errorHandler());
     });
 
+    // use express' router
     app.use(app.router);
     
      // assume "not found" in the error msgs
