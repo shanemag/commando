@@ -1,43 +1,46 @@
 var mongoose = require('mongoose');
 var Keyword = mongoose.model('Keyword');
-var uservar;
 
-module.exports = {
+module.exports = function(req,res) {
+	
+	// Get input text from parser
+	var str = req.query.command;
+	var tokens = str.split(" ");
+	// test tokens
+	for (var i = 0; i < tokens.length; i++) {
+		console.log(tokens[i]);
+	};
 
+	var keytoken = tokens[0];
 
-	getKeyword: function(key) {
+	// First token is create operator, so 
+	if(keytoken === '+') {
 
-	},
-
-	var createKeyword = function(params) {
-		var alias = params[1];
-		var url = params[2];
+		var alias = tokens[1];
+		var url = tokens[2];
 
 		var newKeyword = new Keyword();
 		newKeyword.alias = alias;
 		newKeyword.url = url;
+		newKeyword.user = req.user;
 
 		newKeyword.save(function (err) {
   			if (err) return handleError(err);
   			// saved!
+  			console.log("saved!");
+  			res.send("Created new keyword: " + newKeyword.alias + " with URL " + newKeyword.url)
 		});
-	},
-
-	parseCommand = function(req,res) {
-
-		var str = req.query.command;
-		uservar = req.user;
-		var tokens = str.split(" ");
-		for (var i = 0; i < tokens.length; i++) {
-			console.log(tokens[i]);
-		};
-
-		// Check for create keyword operator
-		if(tokens[0] === '+') {
-			createKeyword(tokens);
-		}
-
+	} else if (keytoken === '-') {
+		// Delete keyword. will need permissions. Throw up a flash "are you sure?" window perhaps?
+	} else {
+		Keyword.retrieve(keytoken, function(err, command) {
+			if(err) return handleError(err);
+			res.redirect(command.url);
+		});
 	}
+
+	
+
 	
 	
 }
