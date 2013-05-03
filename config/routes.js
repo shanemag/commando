@@ -1,4 +1,7 @@
 var routes = require('../routes');
+var home = require('../routes/parser');
+var logout = require('../routes/logout');
+var parser = require('../routes/parser');
 
 module.exports = function (app, passport) {
 

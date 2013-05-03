@@ -8,6 +8,6 @@ var UserSchema = new Schema({
     username: { type: String, required: true } ,
     google: {}
     
-    });
+ });
     
 module.exports = mongoose.model('User', UserSchema);
