@@ -8,7 +8,7 @@ var KeywordSchema = new Schema({
     url: { type: String, required: true } ,
     descrip: { type: String, required: false } ,
     uses: { type: Number, default: 0, required: true } ,
-    user: { type : Schema.ObjectId, ref: 'User', required: false } ,
+    user: { type : Schema.ObjectId, ref: 'User', required: true } ,
     date: { type: Date, default: Date.now, required: true },
     priv: { type: Boolean, default: false}
     
@@ -16,7 +16,7 @@ var KeywordSchema = new Schema({
 
 KeywordSchema.methods = {
 
-    create: function (tokens, cb) {
+    create: function (user, tokens, cb) {
 
         // reference to keyword instance calling this function
         var self = this;
@@ -28,7 +28,7 @@ KeywordSchema.methods = {
 
         self.alias = alias;
         self.url = url;
-        //self.user = req.user;
+        self.user = user._id;
 
         // Check for optional parameters; Description and Privacy parameter
         // If there is more than the minimum amount of tokens, check for private parameter
@@ -63,9 +63,17 @@ KeywordSchema.methods = {
 KeywordSchema.statics = {
 
 	// get keyword by alias
-	retrieve: function (qalias, cb) {
-		this.findOneAndUpdate({ alias : qalias }, {$inc: {"uses": 1}})
-			.exec(cb);
+	retrieve: function (qalias, ruser, cb) {
+
+        // optional user parameter not passed in
+        if(typeof ruser === "undefined") {
+    		this.findOneAndUpdate({ alias : qalias, priv : false}, {$inc: {"uses": 1}})
+    			.exec(cb);
+        }
+        else {
+            this.findOneAndUpdate({$or : [{alias : qalias, priv : false}, {alias : qalias, priv:true, user: ruser._id}]}, {$inc: {"uses": 1}})
+                .exec(cb);
+        }
 	}
 }
     

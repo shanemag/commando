@@ -1,43 +1,63 @@
 var mongoose = require('mongoose');
 var Keyword = mongoose.model('Keyword');
 
-module.exports = function(req,res) {
-	
-	// Get input text from parser
-	var str = req.query.command;
-	var tokens = str.split(" ");
+module.exports = function (req, res) {
 
-	// Query first token to determine action
-	var keytoken = tokens[0];
+	var str = req.query.command; // Actual textbox input
+	var tokens = str.split(" "); // Array of tokens from input
+	var keytoken = tokens[0]; // First token, used to determine next action
+	var tail = tokens.slice(1); // Parameters following first token
+
+	console.log(tail);
 
 	// First token is create operator, so call CREATE COMMAND
-	if(keytoken === '+') {
-
-		// Alias must always be second token
-		//var alias = tokens[1];
-		// Url must always be third token
-		//var url = tokens[2];
-
+	if (keytoken === '+') {
+		
 		// Create new keyword instance. populate with query data
-		var newKeyword = new Keyword({user: req.user});
-		newKeyword.create(tokens, function(err) {
+		var newKeyword = new Keyword();
+		newKeyword.create (req.user, tokens, function (err) {
 			if (err) return handleError(err);
 			console.log("saved!");
   			res.send("Created new keyword: " + newKeyword.alias + " with URL " + newKeyword.url);
 		});
+
 	// END CREATE COMMAND
 	} else if (keytoken === '-') {
 		// Delete keyword. will need permissions. Throw up a flash "are you sure?" window perhaps?
-	} // Not an operator, may be a keyword
-	else {
-		Keyword.retrieve(keytoken, function(err, command) {
-			if(err) return handleError(err);
-			res.redirect(command.url);
-		});
-	}
+	} else {
+		if (req.isAuthenticated) {
+			Keyword.retrieve (keytoken, req.user, function (err, command) {
+				if (err) return handleError(err);
+				else if(tokens.length === 1) {
+					shavedURL = shaveSearchURL(command.url);
+					res.redirect(shavedURL); 
+				} else {
+					var appendedURL = insertParamsToURL(tail, command.url);
+					res.redirect(appendedURL);
+				}
+			});
+		} else {
+			Keyword.retrieve(keytoken, function(err, command) {
+				if (err) return handleError(err);
+				else if(tokens.length === 1) {
+					shavedURL = shaveSearchURL(command.url);
+					res.redirect(shavedURL); 
+				} else {
+					var appendedURL = insertParamsToURL(tail, command.url);
+					res.redirect(appendedURL);
+				}
+			});
+		}
+	}	
+}
 
-	
+var insertParamsToURL = function (params, url) {
+	var joinedparams = params.join('+');
+	var result = url.replace(/%s/g, joinedparams);
+	return result;
+}
 
-	
-	
+var shaveSearchURL = function (url) {
+	var result = url.replace(/%s/g, '');
+	return result;
 }
