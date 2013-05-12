@@ -29,7 +29,7 @@
       "jade": "latest",
       "mongoose": "latest",
       "connect-mongo": "latest",
-      "connect-flash": "lastest",
+      "connect-flash": "latest",
       "passport" : "latest",
       "passport-google-oauth" : "latest"
   },
