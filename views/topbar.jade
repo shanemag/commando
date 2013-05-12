@@ -17,6 +17,12 @@
             li
               a(href='/auth/google') Login
         ul.nav.pull-right
+          li
+            form.navbar-form.span5.form-search(method="get", id="parsernav", action="/parse")
+              .input-append
+                input.search-query.span4(type="text")
+                .btn
+                  .i.icon-search
           if (req.isAuthenticated())
             li
               a(href='') Welcome #{req.user.username}

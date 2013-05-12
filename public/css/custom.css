@@ -25,6 +25,10 @@ body {
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
+.btn {
+  margin-left: -5px;
+}
+
 .jumbotron {
   margin: 80px 0;
   text-align: center;
@@ -40,54 +44,3 @@ body {
   margin: 0px;
 }
  
-/* Page header tweaks */
-.page-header {
-  background-color: #f5f5f5;
-  padding: 20px 20px 10px;
-  margin: -20px -20px 20px;
-}
- 
-/* Styles you shouldn't keep as they are for displaying this base example only */
-.content .span10,
-.content .span4 {
-  min-height: 500px;
-}
-/* Give a quick and non-cross-browser friendly divider */
-.content .span4 {
-  margin-left: 0;
-  padding-left: 19px;
-  border-left: 1px solid #eee;
-}
- 
-.topbar {
-  border: 0;
-}
-
-.btn {
-  padding: 5px 14px 6px;
-}
-
-.login-prompt {
-  margin-top : 10px;
-  margin-bottom : 2px;
-  margin-left: 10px;
-  margin-right: 10px;
-  font-size : 20px;
-  color : #ffffff;
-}
-
-.top-bar-form {
-  margin-bottom : -1px;
-}
-
-.top-bar-form-button {
-  margin-top: 1px;
-  margin-left : 2px;
-  margin-right: 2px;
-}
-
-.top-bar-form-textbox {
-  margin-right : 2px;
-  margin-left : 2px;
-  margin-top : 4px;
-}

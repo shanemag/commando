@@ -71,10 +71,15 @@ KeywordSchema.statics = {
     			.exec(cb);
         }
         else {
-            this.findOneAndUpdate({$or : [{alias : qalias, priv : false}, {alias : qalias, priv:true, user: ruser._id}]}, {$inc: {"uses": 1}})
+            this.findOneAndUpdate({$or : [{alias : qalias, priv : false}, {alias:qalias, priv:true, user:ruser._id}]}, {$inc: {"uses": 1}})
                 .exec(cb);
         }
-	}
+	},
+
+    listUsersKeywords: function (ruser, cb) {
+        this.find({user:ruser}).sort({'date' : -1})
+            .exec(cb);
+    }
 }
     
 module.exports = mongoose.model('Keyword', KeywordSchema);

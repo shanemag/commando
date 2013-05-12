@@ -8,15 +8,13 @@ module.exports = function (req, res) {
 	var keytoken = tokens[0]; // First token, used to determine next action
 	var tail = tokens.slice(1); // Parameters following first token
 
-	console.log(tail);
-
 	// First token is create operator, so call CREATE COMMAND
 	if (keytoken === '+') {
 		
 		// Create new keyword instance. populate with query data
 		var newKeyword = new Keyword();
 		newKeyword.create (req.user, tokens, function (err) {
-			if (err) return handleError(err);
+			if (err) return res.render('500');
 			console.log("saved!");
   			res.send("Created new keyword: " + newKeyword.alias + " with URL " + newKeyword.url);
 		});
@@ -27,7 +25,7 @@ module.exports = function (req, res) {
 	} else {
 		if (req.isAuthenticated) {
 			Keyword.retrieve (keytoken, req.user, function (err, command) {
-				if (err) return handleError(err);
+				if (err) return res.render('500');
 				else if(tokens.length === 1) {
 					shavedURL = shaveSearchURL(command.url);
 					res.redirect(shavedURL); 
@@ -38,7 +36,7 @@ module.exports = function (req, res) {
 			});
 		} else {
 			Keyword.retrieve(keytoken, function(err, command) {
-				if (err) return handleError(err);
+				if (err) return res.render('500');
 				else if(tokens.length === 1) {
 					shavedURL = shaveSearchURL(command.url);
 					res.redirect(shavedURL); 
