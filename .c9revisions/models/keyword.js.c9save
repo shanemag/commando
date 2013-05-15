@@ -1,4 +1,0 @@
-{"ts":1363457919147,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
-{"contributors":[],"silentsave":false,"ts":1363458194583,"patch":[[{"diffs":[[1,"var mongoose = require('mongoose');\r\nvar Schema = mongoose.Schema;\r\n\r\nvar KeywordSchema = new Schema({\r\n    alias: { type: String, required: true } ,\r\n    url: { type: String, required: true } ,\r\n    descrip: { type: String, required: true } \r\n    \r\n    });"]],"start1":0,"start2":0,"length1":0,"length2":257}]],"length":257,"saved":false}
-{"ts":1363460712695,"patch":[[{"diffs":[[0,", required: "],[-1,"tru"],[1,"false } ,\r\n    uses: { type: String, required: fals"],[0,"e } \r\n    \r\n"]],"start1":223,"start2":223,"length1":27,"length2":75}]],"length":305,"saved":false}
-{"ts":1363460732514,"patch":[[{"diffs":[[0,"\n    });"],[1,"\r\n    \r\nmodule.exports = mongoose.model('Keyword', KeywordSchema);"]],"start1":297,"start2":297,"length1":8,"length2":74}]],"length":371,"saved":false}
