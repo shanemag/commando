@@ -1,41 +1,32 @@
 {
   "name": "Commando",
-  "version": "1.0.0",
+  "version": "1.0.0-1",
   "description": "Commando - Keyword based networking service",
   "keywords": [
-    "OpenShift",
+    "Nodejitsu",
     "Node.js",
     "application",
     "openshift"
   ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url":  "http://openshift.redhat.com/"
-  },
-  "homepage": "http://openshift.redhat.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://gitub.com/openshift/origin-server"
-  },
-
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-      "express": "3.1.0",
-      "jade": "latest",
-      "mongoose": "latest",
-      "connect-mongo": "latest",
-      "connect-flash": "latest",
-      "passport" : "latest",
-      "passport-google-oauth" : "latest"
+    "express": "3.1.0",
+    "jade": "latest",
+    "mongoose": "latest",
+    "connect-mongo": "latest",
+    "connect-flash": "latest",
+    "passport": "latest",
+    "passport-google-oauth": "latest"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
-  "main": "server.js"
+  "main": "server.js",
+  "subdomain": "maguis26-commando",
+  "scripts": {
+    "start": "node server.js"
+  }
 }

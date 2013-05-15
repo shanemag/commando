@@ -38,7 +38,7 @@ module.exports = {
       google: {
           clientID: "761773210542.apps.googleusercontent.com"
         , clientSecret: "K8CBSg-cCxDyasBfawFokGkB"
-        , callbackURL: "https://commando-case4fyp.rhcloud.com/oauth2callback"
+        , callbackURL: "http://maguis26-commando.jit.su//oauth2callback"
       } 
     }
 }

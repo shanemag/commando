@@ -12,8 +12,10 @@
   "permissions": [
     "tabs", 
     "http://*/", 
-    "https://*/"
+    "https://*/",
+    "http://maguis26-commando.jit.su/"
   ],
+  "content_security_policy": "script-src 'self' http://localhost; object-src 'self'",
   "browser_action": {
     "default_title": "Commando Extension",
     "default_icon": "icon.png",
