@@ -76,6 +76,11 @@ KeywordSchema.statics = {
         }
 	},
 
+    /*returnDefault: function (cb) {
+        this.findOne({alias:'g'}).exec(cb);
+        });
+    }, */
+
     listUsersKeywords: function (ruser, cb) {
         this.find({user:ruser}).sort({'date' : -1})
             .exec(cb);

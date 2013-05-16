@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 var Keyword = mongoose.model('Keyword');
+//var config = require('../config/config');
+var googleurl = "http://www.google.com/search?q=";
+
 
 module.exports = function (req, res) {
 
@@ -8,8 +11,10 @@ module.exports = function (req, res) {
 	var keytoken = tokens[0]; // First token, used to determine next action
 	var tail = tokens.slice(1); // Parameters following first token
 
-	// First token is create operator, so call CREATE COMMAND
-	if (keytoken === '+') {
+	if(!str || str === null) { // If request string is empty just redirect back
+		res.redirect('back');
+	}
+	else if (keytoken === '+') { // First token is create operator, so call CREATE COMMAND
 		
 		// Create new keyword instance. populate with query data
 		var newKeyword = new Keyword();
@@ -25,10 +30,18 @@ module.exports = function (req, res) {
 	} else {
 		if (req.isAuthenticated) {
 			Keyword.retrieve (keytoken, req.user, function (err, command) {
-				if (err) return res.render('500');
+
+				if (err) res.render('500');
+				if(!command) {
+					//resource = Keyword.returnDefault();
+					//console.log("no command found");
+					var defaultGoogle = insertParamsToURL(tokens, googleurl);
+					res.redirect(defaultGoogle)
+					
+				} 			
 				else if(tokens.length === 1) {
-					shavedURL = shaveSearchURL(command.url);
-					res.redirect(shavedURL); 
+					//shavedURL = shaveSearchURL(command.url);
+					res.redirect(command.url); 
 				} else {
 					var appendedURL = insertParamsToURL(tail, command.url);
 					res.redirect(appendedURL);
@@ -36,10 +49,18 @@ module.exports = function (req, res) {
 			});
 		} else {
 			Keyword.retrieve(keytoken, function(err, command) {
-				if (err) return res.render('500');
+
+				var resource = command;
+
+				if (err) res.render('500');	
+				if(!command) {
+					//resource = Keyword.returnDefault();
+					var defaultGoogle = insertParamsToURL(tokens, googleurl);
+					res.redirect(defaultGoogle)
+				} 	
 				else if(tokens.length === 1) {
-					shavedURL = shaveSearchURL(command.url);
-					res.redirect(shavedURL); 
+					//shavedURL = shaveSearchURL(command.url);
+					res.redirect(command.url); 
 				} else {
 					var appendedURL = insertParamsToURL(tail, command.url);
 					res.redirect(appendedURL);
@@ -51,11 +72,12 @@ module.exports = function (req, res) {
 
 var insertParamsToURL = function (params, url) {
 	var joinedparams = params.join('+');
-	var result = url.replace(/%s/g, joinedparams);
+	url = String(url);
+	var result = url.concat(joinedparams);
 	return result;
 }
 
-var shaveSearchURL = function (url) {
+/*var shaveSearchURL = function (url) {
 	var result = url.replace(/%s/g, '');
 	return result;
-}
+} */
