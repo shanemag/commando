@@ -1,3 +1,7 @@
+script(type='text/javascript')
+  
+
+
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
@@ -12,17 +16,18 @@
             li
               a(href='/profile') Profile
           else
-            li.active
+            li
               a(href='/') Home
             li
               a(href='/auth/google') Login
         ul.nav.pull-right
-          li
-            form.navbar-form.span5.form-search(method="get", id="parsernav", action="/parse")
-              .input-append
-                input.search-query.span4(type="text")
-                .btn
-                  .i.icon-search
+          if(!hideNavSearch)
+            li
+              form.navbar-form.span5.form-search(method="get", id="parserform", action="/parse")
+                .input-append
+                  input.search-query.span4(type="text", name="command", id="parser")
+                  .btn
+                    .i.icon-search
           if (req.isAuthenticated())
             li
               a(href='') Welcome #{req.user.username}

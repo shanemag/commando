@@ -1,3 +1,12 @@
+script
+  $(function() {
+      $('#parserform').submit(function(e) {
+          if (!$('#command').val()) {
+            e.preventDefault();
+          }
+      });
+  });
+
 extends default
 block content
   .jumbotron
@@ -8,9 +17,9 @@ block content
         #myAlert.alert
           .button.close.alert
           blah blah blah
-        form.form-search(method="get", id="parserform", action="/parse")
+        form.form-search(method="get", name="parserform", id="parserform",action="/parse")
           .input-append
-            input.input-xxlarge.search-query(id="parser", type="text", name="command")
+            input.input-xxlarge.search-query(id="command", type="text", name="command")
             input.btn.btn-primary(type="submit", value="Enter")
     br
     p.text-center Sign in with google for more options!

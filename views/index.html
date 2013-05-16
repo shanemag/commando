@@ -1,0 +1,11 @@
+<script>$(document).ready(function() 
+{
+    $('#parserform').submit(function(e) 
+    {
+        if (!$('#command').val()) 
+        {
+          e.preventDefault();
+        }
+    });
+});
+</script><!--extends default--><div class="jumbotron"><h1>commando.</h1><br/><div class="row-fluid"><div class="span8 offset2"><div id="myAlert" class="alert"><div class="button close alert"></div><blah>blah blah</blah></div><form method="get" name="parserform" id="parserform" action="/parse" class="form-search"><div class="input-append"><input id="command" type="text" name="command" class="input-xxlarge search-query"/><input type="submit" value="Enter" class="btn btn-primary"/></div></form></div></div><br/><p class="text-center">Sign in with google for more options!</p><a href="/auth/google"><img src="img/steffi.jpg" width="204" height="32" href="/auth/google"/></a></div><div class="row-fluid text-center"><div class="span8 offset2"><h3 class="text-center">Need Help?</h3><p class="text-center">Welcome to Commando - The Keyword-based networking service!</p><br/><p class="text-center">Please click the button below to see a list of the most commonly used publicly available keywords!</p><a href="#"><input value="Top Keywords" class="center btn"/></a></div></div>
