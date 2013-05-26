@@ -12,10 +12,7 @@ module.exports = {
         , callbackURL: "http://127.0.0.1:3000/oauth2callback"
       } 
     }
-  , test: {
-
-    }
-  /*, production: {
+  , production: {
         root: require('path').normalize(__dirname + '/..'),
       app: {
         name: 'Commando'
@@ -27,5 +24,5 @@ module.exports = {
         , clientSecret: "K8CBSg-cCxDyasBfawFokGkB"
         , callbackURL: "http://maguis26-commando.jit.su//oauth2callback"
       } 
-    } */
+    } 
 } 

@@ -8,10 +8,6 @@ var path = require('path');
 
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config/config')[env];
-var openshift = require("./config/openshift");
-
-// openshift preliminary functions
-openshift();
 
 // db connection
 mongoose.connect(config.db);

@@ -9,5 +9,13 @@ var UserSchema = new Schema({
     google: {}
     
  });
-    
-module.exports = mongoose.model('User', UserSchema);
+
+// Scheme for user groups. contains users and keywords they can use
+var GroupSchema = new Schema({
+	name: { type: String, required: true},
+	users: {type: [UserSchema], required: true}
+	//keywords: {type: , required: false}
+})
+
+exports.User = mongoose.model('User', UserSchema);
+exports.Group = mongoose.model('Group', GroupSchema);

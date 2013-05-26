@@ -10,7 +10,8 @@ var KeywordSchema = new Schema({
     uses: { type: Number, default: 0, required: true } ,
     user: { type : Schema.ObjectId, ref: 'User', required: true } ,
     date: { type: Date, default: Date.now, required: true },
-    priv: { type: Boolean, default: false}
+    priv: { type: Boolean, default: false},
+    group: { type : Schema.ObjectId, ref: 'Group', required:false}
     
 });
 

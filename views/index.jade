@@ -14,13 +14,10 @@ block content
     br
     .row-fluid
       .span8.offset2
-        #myAlert.alert
-          .button.close.alert
-          blah blah blah
         form.form-search(method="get", name="parserform", id="parserform",action="/parse")
           .input-append
             input.input-xxlarge.search-query(id="command", type="text", name="command")
-            input.btn.btn-primary(type="submit", value="Enter")
+            input.btn.btn-inverse(type="submit", value="Enter")
     br
     p.text-center Sign in with google for more options!
     a(href="/auth/google")

@@ -11,6 +11,12 @@ body {
 .footer p {
   text-align: center; /* center align it with the container */
 }
+
+.jumbotron .input-xxlarge {
+margin-bottom: 10px !important;
+line-height: 20px !important;
+font-size: 15.5px !important;
+}
  
 /* The white background content wrapper */
 .content {
@@ -38,6 +44,10 @@ body {
   font-size: 72px;
   padding: 20px;
   font-family: "Courier New", Courier, monospace;
+}
+
+.jumbrotron input-xxlarge[type="text"] {
+    height:40px;
 }
 
 .jumbrotron .btn {

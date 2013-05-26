@@ -1,1 +1,3 @@
-alert.js
+function showAlert() {
+  $("#myAlert").addClass("in")
+}

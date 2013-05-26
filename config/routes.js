@@ -1,4 +1,3 @@
-var routes = require('../routes');
 var home = require('../routes/home');
 var logout = require('../routes/logout');
 var parser = require('../routes/parser');

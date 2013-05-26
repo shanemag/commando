@@ -1,4 +1,3 @@
-// This callback function is called when the content script has been 
 // injected and returned its results
 function onPageInfo(o) { 
 	var input = o;
